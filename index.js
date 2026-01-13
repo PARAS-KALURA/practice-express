@@ -15,17 +15,36 @@ app.get('/items', (req, res) => {
     res.status(200).json(items);
 });
 
-app.get('/items:id', (req, res) => {
+app.get('/items/:id', (req, res) => {
     const id = parseInt(req.params.id);
 
     const item = items.find( i => i.id === id);
     if(!item) {
         return res.status(404).json({error: "Item not found :)"});
     }
+    res.status(200).json(item);
+})
 
-} )
+
+app.post('/items', (req, res) => {
+    const {name} = req.body;
+
+ if(!name){
+    return res.status(400).json({error: "Name not found"});
+ }
+
+ const newItem = {
+    id: items.length + 1,
+    name: name,
+ };
+
+ items.push(newItem);
+
+ res.status(201).json(newItem);
+
+});
 
 app.listen(PORT, () => {
     console.log(`Server ${PORT} is running`);
     
-})
+});
