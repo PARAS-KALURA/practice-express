@@ -20,7 +20,7 @@ app.get('/items:id', (req, res) => {
 
     const item = items.find( i => i.id === id);
     if(!item) {
-        return res.status(404).json({error: "Item not found"});
+        return res.status(404).json({error: "Item not found :)"});
     }
 
 } )
