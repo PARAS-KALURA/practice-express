@@ -33,10 +33,11 @@ app.post('/items', (req, res) => {
     return res.status(400).json({error: "Name not found"});
  }
 
- const newItem = {
-    id: items.length + 1,
-    name: name,
- };
+const newItem = {
+  id: items.length ? items[items.length - 1].id + 1 : 1,
+  name,
+};
+
 
  items.push(newItem);
 
