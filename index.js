@@ -45,6 +45,6 @@ const newItem = {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server ${PORT} is running`);
+    console.log(`Server ${PORT} is running smoothly`);
     
 });
